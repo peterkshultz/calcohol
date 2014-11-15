@@ -1,3 +1,4 @@
+
 //
 //  ViewController.h
 //  Calcohol
@@ -14,6 +15,9 @@
 @property (weak, nonatomic) UITextField *beerPercentTextField;
 @property (weak, nonatomic) UILabel *resultLabel;
 @property (weak, nonatomic) UISlider *beerCountSlider;
+
+@property (strong, nonatomic) NSString* unitOfMeasure;
+@property (strong, nonatomic) NSString* unitOfMeasurePlural;
 
 - (void)buttonPressed:(UIButton *)sender;
 

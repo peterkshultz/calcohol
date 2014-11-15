@@ -12,6 +12,14 @@
 
 // DELETE PRE-WRITTEN METHODS: initiWithNibName:bundle:, viewDidLoad, didReceiveMemoryWarning…
 
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    self.title = NSLocalizedString(@"Whiskey", @"whiskey");
+    self.unitOfMeasure = @"Shot";
+    self.unitOfMeasurePlural = @"Shots";
+}
+
+
 - (void)buttonPressed:(UIButton *)sender;
 {
     [self.beerPercentTextField resignFirstResponder];

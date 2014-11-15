@@ -82,6 +82,13 @@
     
     // Gets rid of the maximum number of lines on the label
     self.resultLabel.numberOfLines = 0;
+    
+    
+    //Give controller a title
+    self.title = NSLocalizedString(@"Wine", @"wine");
+    self.unitOfMeasure = @"Glass";
+    self.unitOfMeasurePlural = @"Glasses";
+    
 }
 
 
@@ -108,16 +115,16 @@
 
     
     if (numberOfBeers == 1) {
-        beerText = NSLocalizedString(@"beer", @"singular beer");
+//        beerText = NSLocalizedString(@"beer", @"singular beer");
+        beerText = self.unitOfMeasure;
     } else {
-        beerText = NSLocalizedString(@"beers", @"plural of beer");
+        beerText = self.unitOfMeasurePlural;
     }
-
-    
     
     NSLog(@"Slider value changed to %f", sender.value);
     [self.beerPercentTextField resignFirstResponder];
     self.beerLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d %@", nil), numberOfBeers, beerText];
+    self.title = [NSString stringWithFormat:NSLocalizedString(@"%d %@", nil), numberOfBeers, beerText];
 }
 - (void)buttonPressed:(id)sender
 {
