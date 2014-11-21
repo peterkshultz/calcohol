@@ -18,6 +18,23 @@
 
 @implementation BLCViewController
 
+
+- (instancetype) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+        
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    }
+    
+    return self;
+}
+
+
+
 - (void)loadView {
     // Allocate and initialize the all-encompassing view
     self.view = [[UIView alloc] init];
@@ -32,7 +49,7 @@
 //    label.backgroundColor = [UIColor whiteColor];
 //    label.text = @"Fill in a percentage, pick a certain number of beers, and click calculate!";
     
-    [textField setKeyboardType:UIKeyboardTypeNumberPad];
+    [textField setKeyboardType:UIKeyboardTypeDecimalPad];
     
     // Add each view and the gesture recognizer as the view's subviews
     [self.view addSubview:textField];
@@ -85,7 +102,10 @@
     
     
     //Give controller a title
-    self.title = NSLocalizedString(@"Wine", @"wine");
+    //self.title = NSLocalizedString(@"Wine", @"wine");
+    
+    self.view.backgroundColor = [UIColor colorWithRed:0.741 green:0.925 blue:0.714 alpha:1];
+    
     self.unitOfMeasure = @"Glass";
     self.unitOfMeasurePlural = @"Glasses";
     
@@ -125,6 +145,8 @@
     [self.beerPercentTextField resignFirstResponder];
     self.beerLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d %@", nil), numberOfBeers, beerText];
     self.title = [NSString stringWithFormat:NSLocalizedString(@"%d %@", nil), numberOfBeers, beerText];
+    
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
 }
 - (void)buttonPressed:(id)sender
 {

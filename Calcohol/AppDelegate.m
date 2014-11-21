@@ -8,14 +8,21 @@
 
 #import "AppDelegate.h"
 #import "BLCViewController.h"
-#import "BLCMainMenuViewController.h"
+#import "BLCViewController.h"
+#import "BLCWhiskeyViewController.h"
 
-
-@interface BLCViewController ()
+@interface BLCViewController () <UITabBarControllerDelegate>
 
 @end
 
 @implementation AppDelegate
+
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"New view controller selected: %@", viewController.title);
+
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -23,9 +30,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     // Override point for customization after application launch.
 
-    BLCMainMenuViewController *mainMenuViewController = [[BLCMainMenuViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
-    self.window.rootViewController = navigationController;
+    BLCViewController* wineVC = [[BLCViewController alloc] init];
+    BLCWhiskeyViewController* whiskeyVC = [[BLCWhiskeyViewController alloc] init];
+    UITabBarController* tabBarVC = [[UITabBarController alloc] init];
+    tabBarVC.viewControllers = @[wineVC, whiskeyVC];
+    
+    self.window.rootViewController = tabBarVC;
+    
+    tabBarVC.delegate = self;
+    
     [self.window makeKeyAndVisible];
     return YES;
     
